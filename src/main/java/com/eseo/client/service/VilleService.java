@@ -4,6 +4,7 @@ import com.eseo.client.dto.VilleDto;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,29 @@ public class VilleService {
         catch (Exception e){
             return -1;
         }
+    }
+
+    public static int update(VilleDto villeDto) throws IOException{
+        try{
+            return RequestService.update(villeDto);
+        }
+        catch (Exception e){
+            return -1;
+        }
+    }
+
+    public static VilleDto requestToDto(HttpServletRequest request){
+        VilleDto dto = new VilleDto();
+
+        dto.setInseeCode(request.getParameter("inseeCode"));
+        dto.setName(request.getParameter("cityName"));
+        dto.setLabel(request.getParameter("label"));
+        dto.setLat(request.getParameter("longitude"));
+        dto.setLon(request.getParameter("latitude"));
+        dto.setPostalCode(request.getParameter("postalCode"));
+        dto.setLine5(request.getParameter("line5"));
+
+        return dto;
     }
 
     /**

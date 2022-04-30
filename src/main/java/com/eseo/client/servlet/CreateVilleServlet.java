@@ -18,24 +18,17 @@ public class CreateVilleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/WEB-INF//views/ville/createVille.jsp").forward(request, response);
+        request.setAttribute("action", "/ville/create");
+        request.setAttribute("mode", "Créer la ville");
+        request.getRequestDispatcher("/WEB-INF//views/ville/form.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String message;
         boolean success = false;
-        VilleDto dto = new VilleDto();
 
-        dto.setInseeCode(request.getParameter("inseeCode"));
-        dto.setName(request.getParameter("cityName"));
-        dto.setLabel(request.getParameter("label"));
-        dto.setLat(request.getParameter("longitude"));
-        dto.setLon(request.getParameter("latitude"));
-        dto.setPostalCode(request.getParameter("postalCode"));
-        dto.setLine5(request.getParameter("line5"));
-
-        int responseCode = VilleService.create(dto);
+        int responseCode = VilleService.create(VilleService.requestToDto(request));
 
         switch (responseCode){
             case 200:

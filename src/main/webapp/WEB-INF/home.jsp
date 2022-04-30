@@ -79,7 +79,12 @@
                             <td>${ville.postalCode}</td>
                             <td>${ville.lat}</td>
                             <td>${ville.lon}</td>
-                            <td><a href="http://www.openstreetmap.org/?lat=${ville.lat}&lon=${ville.lon}&zoom=14&layers=M" class="btn btn-sm"><i class="fa-solid fa-map"></i></a></td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="/ville/update?inseeCode=${ville.inseeCode}"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="http://www.openstreetmap.org/?lat=${ville.lat}&lon=${ville.lon}&zoom=14&layers=M" class="btn btn-sm"><i class="fa-solid fa-map"></i></a>
+                                </div>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

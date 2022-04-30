@@ -65,4 +65,26 @@ public class RequestService {
         return conn.getResponseCode();
     }
 
+    public static int update(Object dto) throws IOException {
+        URL url = new URL(URLBuilder.UPDATE_VILLE);
+
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("PUT");
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setDoOutput(true);
+
+        Gson gson = new Gson();
+        String requestBody = gson.toJson(dto);
+
+        OutputStream outStream = conn.getOutputStream();
+        OutputStreamWriter outStreamWriter = new OutputStreamWriter(outStream, "UTF-8");
+        outStreamWriter.write(requestBody);
+        outStreamWriter.flush();
+        outStreamWriter.close();
+        outStream.close();
+        conn.connect();
+
+        return conn.getResponseCode();
+    }
+
 }

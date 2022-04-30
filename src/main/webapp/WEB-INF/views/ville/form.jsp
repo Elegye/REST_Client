@@ -22,7 +22,7 @@
     <section class="container">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Créer une ville</h5>
+                <h5 class="card-title"><c:out value="${mode}"></c:out></h5>
             </div>
             <div class="card-body">
                 <c:choose>
@@ -37,40 +37,40 @@
                         </div>
                     </c:when>
                 </c:choose>
-                <form action="${pageContext.request.contextPath}/ville/create" method="post">
+                <form action="${action}" method="post">
                     <div class="mb-3">
                         <label class="label" for="cityName">Nom de la ville</label>
-                        <input class="form-control" type="text" id="cityName" name="cityName" placeholder="Paris, New York, Dublin, Belfast, ...">
+                        <input class="form-control" type="text" id="cityName" name="cityName" placeholder="Paris, New York, Dublin, Belfast, ..." value="${ville.name}">
                     </div>
                     <div class="mb-3">
                         <label class="label" for="postalCode">Code postal</label>
-                        <input class="form-control" type="text" id="postalCode" name="postalCode" placeholder="72230">
+                        <input class="form-control" type="text" id="postalCode" name="postalCode" placeholder="72230" value="${ville.postalCode}">
                     </div>
                     <div class="mb-3">
                         <label class="label" for="label">Libellé</label>
-                        <input class="form-control" type="text" id="label" name="label" placeholder="">
+                        <input class="form-control" type="text" id="label" name="label" placeholder="" value="${ville.label}">
                     </div>
                     <div class="mb-3">
                         <label class="label" for="inseeCode">Code INSEE</label>
-                        <input class="form-control" type="text" id="inseeCode" name="inseeCode" placeholder="Code INSEE">
+                        <input class="form-control" type="text" id="inseeCode" name="inseeCode" placeholder="Code INSEE" value="${ville.inseeCode}">
                     </div>
                     <div class="mb-3">
                         <label class="label" for="latitude">Latitude</label>
-                        <input class="form-control" type="text" id="latitude" name="latitude">
+                        <input class="form-control" type="text" id="latitude" name="latitude" value="${ville.lat}">
                     </div>
 
                     <div class="mb-3">
                         <label class="label" for="longitude">Longitude</label>
-                        <input class="form-control" type="text" id="longitude" name="longitude">
+                        <input class="form-control" type="text" id="longitude" name="longitude" value="${ville.lon}">
                     </div>
 
                     <div class="mb-3">
                         <label class="label" for="line5">Ligne 5</label>
-                        <input class="form-control" type="text" id="line5" name="line5">
+                        <input class="form-control" type="text" id="line5" name="line5" value="${ville.line5}">
                     </div>
 
                     <div class="mb-3">
-                        <button class="btn btn-success" type="submit">Créer la ville</button>
+                        <button class="btn btn-success" type="submit"><c:out value="${mode}"></c:out></button>
                     </div>
                 </form>
             </div>

@@ -10,4 +10,6 @@ public class URLBuilder {
 
     public static final String CREATE_VILLE = BASE_URL + "/ville/create";
 
+    public static final String UPDATE_VILLE = BASE_URL + "/ville/edit";
+
 }
